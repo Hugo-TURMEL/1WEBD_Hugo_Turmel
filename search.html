@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINÉPALACE - Recherche</title>
+    <link rel="stylesheet" href="CSS/index.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo"> 
+            <img src="assets/CinéPalace.png" alt="Logo" class="logo-img">
+            CINÉPALACE
+        </h1>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Accueil</a>
+            <a href="search.html" class="nav-link active">Rechercher</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2 class="hero-title">Faites votre choix</h2>
+        </section>
+
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="search-input" 
+                class="search-input"
+                placeholder="Cherchez un film (ex: Kung fu Panda)"
+            />
+        </div>
+
+        <div id="results-grid" class="movies-grid"></div>
+
+        <div id="load-more-container" class="btn-center" style="display: none;">
+            <button id="load-more-btn" class="btn">Afficher plus de résultats</button>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Recherche en cours...</p>
+        </div>
+
+        <div id="no-results" class="no-results">
+            <p>Aucun film trouvé</p>
+            <p style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.7;">Essayez avec un autre titre</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CinéPalace - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="JS/search.js"></script>
+</body>
+</html>

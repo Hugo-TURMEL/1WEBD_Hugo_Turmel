@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINÉPALACE - Détails du film</title>
+    <link rel="stylesheet" href="CSS/index.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo">
+            <img src="assets/CinéPalace.png" alt="Logo" class="logo-img">
+            CINÉPALACE
+        </h1>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Accueil</a>
+            <a href="search.html" class="nav-link">Rechercher</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="movie-details"></div>
+
+        <div id="loading" class="loading show">
+            <div class="spinner"></div>
+            <p>Chargement des détails...</p>
+        </div>
+
+        <div id="error" class="no-results" style="display: none;">
+            <p>Impossible de charger les détails du film</p>
+            <a href="index.html" class="btn" style="margin-top: 1rem;">Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CinéPalace - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="JS/movie.js"></script>
+</body>
+</html>

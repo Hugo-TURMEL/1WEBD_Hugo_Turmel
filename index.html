@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINÉPALACE</title>
+    <link rel="stylesheet" href="CSS/index.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo">
+            <img src="assets/CinéPalace.png" alt="Logo" class="logo-img">
+            CINÉPALACE
+        </h1>
+        <nav class="nav">
+            <a href="index.html" class="nav-link active">Accueil</a>
+            <a href="search.html" class="nav-link">Rechercher</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2 class="hero-title">Films en Tendance</h2>
+            <p class="hero-subtitle">Découvrez les films du moment</p>
+        </section>
+
+        <div id="movies-grid" class="movies-grid"></div>
+        
+        <div class="btn-center">
+            <button id="load-more-btn" class="btn">Afficher plus de films</button>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Chargement des films...</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CinéPalace - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="JS/index.js"></script>
+</body>
+</html>
