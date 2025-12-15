@@ -42,19 +42,37 @@ function createMovieHTML(movie) {
     
     // info du casting
     let castHTML = '';
-    const cast = movie.credits && movie.credits.cast ? movie.credits.cast.slice(0, 12) : [];
-    
+
+    // Récupération du casting
+    let cast = [];
+    if (movie.credits && movie.credits.cast) {
+        cast = movie.credits.cast.slice(0, 12);
+    }
+
     if (cast.length > 0) {
         castHTML = cast.map(actor => {
-            const photoUrl = actor.profile_path ? `${IMAGE_URL}${actor.profile_path}` : null;
-            
+
+            // Photo de l'acteur
+            let photoUrl = null;
+            if (actor.profile_path) {
+                photoUrl = IMAGE_URL + actor.profile_path;
+            }
+
+            let photoHTML = '';
+            if (photoUrl) {
+                photoHTML = `<img src="${photoUrl}" alt="${actor.name}" class="cast-photo">`;
+            } else {
+                photoHTML = `
+                    <div class="no-poster">
+                        <img src="assets/acteur_indispo.jpg">
+                    </div>
+                `;
+            }
+
             return `
                 <div class="cast-member">
                     <div class="cast-photo-box">
-                        ${photoUrl 
-                            ? `<img src="${photoUrl}" alt="${actor.name}" class="cast-photo">`
-                            : `<div class="no-poster"><img src="assets/acteur_indispo.jpg"></div>`
-                        }
+                        ${photoHTML}
                     </div>
                     <p class="cast-name">${actor.name}</p>
                     <p class="cast-character">${actor.character}</p>
@@ -64,63 +82,92 @@ function createMovieHTML(movie) {
     } else {
         castHTML = '<p>Aucune information sur le casting disponible.</p>';
     }
-    
-    // HTML pour rajouter les détails du film
+
+    let backdropHTML = '';
+    if (backdropUrl) {
+        backdropHTML = `
+            <img src="${backdropUrl}" alt="${movie.title}" class="movie-backdrop">
+        `;
+    }
+
+    let runtimeHTML = '';
+    if (movie.runtime) {
+        runtimeHTML = `
+            <div class="meta-item">
+                <span class="meta-label">Durée:</span>
+                <span>${movie.runtime} min</span>
+            </div>
+        `;
+    }
+
+    let posterHTML = '';
+    if (posterUrl) {
+        posterHTML = `<img src="${posterUrl}" alt="${movie.title}">`;
+    } else {
+        posterHTML = `
+            <div class="no-poster" style="
+                width: 300px;
+                height: 450px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--color-dark);
+                border-radius: 8px;
+            "><img src="assets/film_indispo.jpg"></div>
+        `;
+    }
+
+    let overviewText = 'Aucun synopsis disponible.';
+    if (movie.overview) {
+        overviewText = movie.overview;
+    }
+
     return `
         <div class="movie-details">
             <div class="movie-backdrop-box">
-                ${backdropUrl 
-                    ? `<img src="${backdropUrl}" alt="${movie.title}" class="movie-backdrop">`
-                    : ''
-                }
+                ${backdropHTML}
             </div>
-            
+
             <div class="movie-content">
                 <h1 class="movie-detail-title">${movie.title}</h1>
-                
+
                 <div class="movie-meta">
                     <div class="meta-item">
                         <span class="meta-label">Note:</span>
                         <span class="rating">${rating}/10</span>
                     </div>
+
                     <div class="meta-item">
                         <span class="meta-label">Sortie cinéma:</span>
                         <span>${releaseDate}</span>
                     </div>
-                    ${movie.runtime ? `
-                        <div class="meta-item">
-                            <span class="meta-label">Durée:</span>
-                            <span>${movie.runtime} min</span>
-                        </div>
-                    ` : ''}
+
+                    ${runtimeHTML}
                 </div>
-                
+
                 <div class="movie-info-layout">
                     <div class="movie-poster-section">
-                        ${posterUrl 
-                            ? `<img src="${posterUrl}" alt="${movie.title}">`
-                            : '<div class="no-poster" style="width: 300px; height: 450px; display: flex; align-items: center; justify-content: center; background: var(--color-dark); border-radius: 8px;">🎬</div>'
-                        }
+                        ${posterHTML}
                     </div>
-                    
+
                     <div class="movie-text-section">
                         <h2 class="section-title">Synopsis</h2>
                         <p class="movie-description">
-                            ${movie.overview || 'Aucun synopsis disponible.'}
+                            ${overviewText}
                         </p>
-                        
+
                         <h2 class="section-title">Genres</h2>
                         <div class="genres-list">
                             ${genresHTML}
                         </div>
                     </div>
                 </div>
-                
+
                 <h2 class="section-title">Casting</h2>
                 <div class="cast-grid">
                     ${castHTML}
                 </div>
-                
+
                 <div style="text-align: center; margin-top: 2rem;">
                     <a href="index.html" class="btn">← Retour à l'accueil</a>
                 </div>
@@ -128,6 +175,7 @@ function createMovieHTML(movie) {
         </div>
     `;
 }
+
 
 async function loadMovieDetails() {
     const movieId = getMovieId();
