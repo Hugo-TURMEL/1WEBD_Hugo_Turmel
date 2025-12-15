@@ -40,7 +40,6 @@ function createMovieHTML(movie) {
     }
     const releaseDate = formatDate(movie.release_date);
     
-    // Genres
     let genresHTML = '';
     if (movie.genres && movie.genres.length > 0) {
         genresHTML = movie.genres.map(g => `<span class="genre-tag">${g.name}</span>`).join('');
@@ -48,7 +47,6 @@ function createMovieHTML(movie) {
         genresHTML = '<span class="genre-tag">Non spécifié</span>';
     }
     
-    // info du casting
     let castHTML = '';
 
     let cast = [];

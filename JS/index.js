@@ -27,8 +27,6 @@ function createMovieCard(movie) {
         overview = 'Aucun résumé disponible.';
     }
 
-    
-    // Cut le résumé si c'est trop long
     let shortOverview = overview;
     if (overview.length > 150) {
         shortOverview = overview.substring(0, 150) + '...';
