@@ -13,8 +13,20 @@ async function getTrendingMovies(page) {
 }
 
 function createMovieCard(movie) {
-    let posterHTML = '';
+    let posterUrl = null;
+    
+    if (movie.poster_path) {
+        posterUrl = IMAGE_URL + movie.poster_path;
+    }
+    let shortOverview = 'Aucun résumé disponible.';
+    if (movie.overview) {
+        shortOverview = movie.overview;
+    }
+    if (shortOverview.length > 150) {
+        shortOverview = shortOverview.substring(0, 150) + '...';
+    }
 
+    let posterHTML = '';
     if (posterUrl) {
         posterHTML = `<img src="${posterUrl}" alt="${movie.title}" class="movie-poster">`;
     } else {
