@@ -13,32 +13,22 @@ async function getTrendingMovies(page) {
 }
 
 function createMovieCard(movie) {
-    let posterUrl;
-    if (movie.poster_path) {
-        posterUrl = IMAGE_URL + movie.poster_path;
+    let posterHTML = '';
+
+    if (posterUrl) {
+        posterHTML = `<img src="${posterUrl}" alt="${movie.title}" class="movie-poster">`;
     } else {
-        posterUrl = null; 
+        posterHTML = `
+            <div class="no-poster">
+                <img src="assets/film_indispo.jpg">
+            </div>
+        `;
     }
 
-    let overview;
-    if (movie.overview) {
-        overview = movie.overview;
-    } else {
-        overview = 'Aucun résumé disponible.';
-    }
-
-    let shortOverview = overview;
-    if (overview.length > 150) {
-        shortOverview = overview.substring(0, 150) + '...';
-    }
-    
     return `
         <article class="movie-card">
             <div class="movie-poster-box">
-                ${posterUrl 
-                    ? `<img src="${posterUrl}" alt="${movie.title}" class="movie-poster">`
-                    : `<div class="no-poster"><img src="assets/film_indispo.jpg"></div>`
-                }
+                ${posterHTML}
             </div>
             <div class="movie-info">
                 <h3 class="movie-title">${movie.title}</h3>
