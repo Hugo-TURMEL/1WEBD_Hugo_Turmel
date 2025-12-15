@@ -17,7 +17,7 @@ function createMovieCard(movie) {
     if (movie.poster_path) {
         posterUrl = IMAGE_URL + movie.poster_path;
     } else {
-        posterUrl = null;
+        posterUrl = null; 
     }
 
     let overview;
