@@ -32,12 +32,12 @@ cinema-vintage/
 ├── index.html          # Page d'accueil
 ├── search.html         # Page de recherche
 ├── movie.html          # Page détails
-├── index.css          # Styles CSS
+├── index.css           # Styles CSS
 ├── js/
 │   ├── index.js
 │   ├── search.js
 │   └── movie.js
-└── assets/             # Images
+└── assets/              # Images
 ```
 
 Hugo TURMEL - CINEPALACE
