@@ -13,10 +13,22 @@ async function getTrendingMovies(page) {
 }
 
 function createMovieCard(movie) {
-    const posterUrl = movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : null;
-    const overview = movie.overview || 'Aucun résumé disponible.';
+    let posterUrl;
+    if (movie.poster_path) {
+        posterUrl = IMAGE_URL + movie.poster_path;
+    } else {
+        posterUrl = null;
+    }
+
+    let overview;
+    if (movie.overview) {
+        overview = movie.overview;
+    } else {
+        overview = 'Aucun résumé disponible.';
+    }
+
     
-    // Coupe le résumé si c'est trop long
+    // Cut le résumé si c'est trop long
     let shortOverview = overview;
     if (overview.length > 150) {
         shortOverview = overview.substring(0, 150) + '...';

@@ -14,7 +14,12 @@ async function searchMovies(query, page) {
 }
 
 function createResultCard(movie) {
-    const posterUrl = movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : null;
+    let posterUrl = null;
+
+    if (movie.poster_path) {
+        posterUrl = IMAGE_URL + movie.poster_path;
+    }
+
     
     return `
         <article class="movie-card">
