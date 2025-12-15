@@ -14,7 +14,6 @@ async function getMovieDetails(movieId) {
     return data;
 }
 
-// Date de release
 function formatDate(dateString) {
     if (!dateString) return 'Date inconnue';
     
@@ -35,7 +34,7 @@ function createMovieHTML(movie) {
     if (movie.poster_path) {
         posterUrl = IMAGE_URL + movie.poster_path;
     }
-    let rating = 'N/A';
+    let rating = 'Pas noté';
     if (movie.vote_average) {
         rating = movie.vote_average.toFixed(1);
     }
@@ -54,7 +53,7 @@ function createMovieHTML(movie) {
 
     let cast = [];
     if (movie.credits && movie.credits.cast) {
-        cast = movie.credits.cast.slice(0, 12);
+        cast = movie.credits.cast.slice(0, 8);
     }
 
     if (cast.length > 0) {
