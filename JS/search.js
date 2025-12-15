@@ -16,16 +16,24 @@ async function searchMovies(query, page) {
 function createResultCard(movie) {
     let posterUrl = null;
     if (movie.poster_path) {
-        posterUrl = IMAGE_URL + movie.poster_path; 
+        posterUrl = IMAGE_URL + movie.poster_path;
     }
-    
+
+    let posterHTML = '';
+    if (posterUrl) {
+        posterHTML = `<img src="${posterUrl}" alt="${movie.title}" class="movie-poster">`;
+    } else {
+        posterHTML = `
+            <div class="no-poster">
+                <img src="assets/film_indispo.jpg">
+            </div>
+        `;
+    }
+
     return `
         <article class="movie-card">
             <div class="movie-poster-box">
-                ${posterUrl 
-                    ? `<img src="${posterUrl}" alt="${movie.title}" class="movie-poster">`
-                    : `<div class="no-poster"><img src="assets/film_indispo.jpg"></div>`
-                }
+                ${posterHTML}
             </div>
             <div class="movie-info">
                 <h3 class="movie-title">${movie.title}</h3>
@@ -34,6 +42,7 @@ function createResultCard(movie) {
         </article>
     `;
 }
+
 
 function displayResults(movies, append) {
     const grid = document.getElementById('results-grid');
