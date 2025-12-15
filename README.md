@@ -32,7 +32,7 @@ cinema-vintage/
 ├── index.html          # Page d'accueil
 ├── search.html         # Page de recherche
 ├── movie.html          # Page détails
-├── styles.css          # Styles CSS
+├── index.css          # Styles CSS
 ├── js/
 │   ├── index.js
 │   ├── search.js

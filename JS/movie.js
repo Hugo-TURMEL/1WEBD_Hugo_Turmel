@@ -27,9 +27,18 @@ function formatDate(dateString) {
 }
 
 function createMovieHTML(movie) {
-    const backdropUrl = movie.backdrop_path ? `${IMAGE_URL}${movie.backdrop_path}` : null;
-    const posterUrl = movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : null;
-    const rating = movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A';
+    let backdropUrl = null;
+    if (movie.backdrop_path) {
+        backdropUrl = IMAGE_URL + movie.backdrop_path;
+    }
+    let posterUrl = null;
+    if (movie.poster_path) {
+        posterUrl = IMAGE_URL + movie.poster_path;
+    }
+    let rating = 'N/A';
+    if (movie.vote_average) {
+        rating = movie.vote_average.toFixed(1);
+    }
     const releaseDate = formatDate(movie.release_date);
     
     // Genres
@@ -43,7 +52,6 @@ function createMovieHTML(movie) {
     // info du casting
     let castHTML = '';
 
-    // Récupération du casting
     let cast = [];
     if (movie.credits && movie.credits.cast) {
         cast = movie.credits.cast.slice(0, 12);
@@ -51,8 +59,6 @@ function createMovieHTML(movie) {
 
     if (cast.length > 0) {
         castHTML = cast.map(actor => {
-
-            // Photo de l'acteur
             let photoUrl = null;
             if (actor.profile_path) {
                 photoUrl = IMAGE_URL + actor.profile_path;
