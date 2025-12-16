@@ -22,8 +22,8 @@ function createMovieCard(movie) {
     if (movie.overview) {
         shortOverview = movie.overview;
     }
-    if (shortOverview.length > 150) {
-        shortOverview = shortOverview.substring(0, 150) + '...';
+    if (shortOverview.length > 200) {
+        shortOverview = shortOverview.substring(0, 200) + '...';
     }
 
     let posterHTML = '';

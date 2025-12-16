@@ -116,7 +116,7 @@ function createMovieHTML(movie) {
                 justify-content: center;
                 background: var(--color-dark);
                 border-radius: 8px;
-            "><img src="assets/film_indispo.jpg"></div>
+            "></div>
         `;
     }
 
