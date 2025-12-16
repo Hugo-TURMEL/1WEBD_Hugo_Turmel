@@ -297,7 +297,7 @@ header {
 
 .movie-backdrop-box {
     position: relative;
-    padding-top: 45%;
+    padding-top: 42%;
     background-color: var(--color-dark);
     margin-bottom: 0;
 }
@@ -307,7 +307,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 65vh;
     object-fit: cover; 
 }
 
