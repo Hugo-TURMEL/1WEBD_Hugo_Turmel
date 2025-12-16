@@ -113,6 +113,19 @@ header {
         padding: 0.5rem 1.1rem;
         font-size: 0.85rem;
     }
+
+    .movie-backdrop-box {
+        padding-top: 70%;
+    }
+
+    .movie-backdrop {
+        height: 100%;
+    }
+
+    .movie-content {
+        padding: 1.5rem;
+        margin-top: 19.4rem;
+    }
 }
 
 /* Container */
