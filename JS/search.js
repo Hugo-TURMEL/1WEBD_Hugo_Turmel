@@ -94,7 +94,8 @@ async function performSearch(query, page, append) {
         }
     } catch (error) {
         console.error('Erreur:', error);
-        alert('Erreur lors de la recherche');
+        const grid = document.getElementById('results-grid');
+        grid.innerHTML = '<p style="text-align:center; color:#ff6b6b; padding:2rem;">Erreur lors de la recherche</p>';
     } finally {
         isLoading = false;
         loading.classList.remove('show');

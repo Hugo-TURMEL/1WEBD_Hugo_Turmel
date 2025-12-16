@@ -80,7 +80,8 @@ async function loadMovies(page) {
         }
     } catch (error) {
         console.error('Erreur:', error);
-        alert('Erreur lors du chargement des films');
+        const grid = document.getElementById('movies-grid');
+        grid.innerHTML = '<p style="text-align:center; color:#ff6b6b; padding:2rem;">Impossible de charger les films</p>';
     } finally {
         isLoading = false;
         loading.classList.remove('show');
